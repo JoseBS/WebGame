@@ -1,7 +1,5 @@
-
-
 <div id="principal">
-    <div id="pregustas" class="contenido">
+    <div id="preguntas" class="contenido">
 
     </div>
     <div id="bolas" class="contenido">
@@ -16,24 +14,37 @@
 
 
 <script>
-    function myFunction() {
-        var html = '<div id="principal">' +
-            '    <div id="pregustas" class="contenido">' +
 
-            '</div>' +
-            '<div id="bolas" class="contenido">' +
-            '    <div id="bola-1" class="bola"></div>' +
-            '<div id="bola-2" class="bola"></div>' +
-            '<div id="bola-3" class="bola"></div>' +
-            '<div id="bola-4" class="bola"></div>' +
-            '<div id="bola-5" class="bola"></div>' +
-            '</div>' +
-            '<div id="respuesta" class="contenido"></div>' +
+    var preguntasArray = matriz();
+    function myFunction() {
+
+        var preguntasHTML = '';
+        for (var i = 0; i < preguntasArray.length; i++) {
+            preguntasHTML += '<li><a href="#">' + preguntasArray[i][0].toString() + '</a></li>';
+        }
+        var html = '' +
+            '<div id="principal">' +
+            '    <div id="preguntas" class="contenido">' +
+            '        <p>Por favor seleecione la pregunta que desea hacer el día de hoy:</p>' +
+            '        <ul>' + preguntasHTML + '</ul>' +
+            '    </div>' +
+            '    <div id="bolas" class="contenido">' +
+            '        <div id="bola-1" class="bola"></div>' +
+            '        <div id="bola-2" class="bola"></div>' +
+            '        <div id="bola-3" class="bola"></div>' +
+            '        <div id="bola-4" class="bola"></div>' +
+            '        <div id="bola-5" class="bola"></div>' +
+            '    </div>' +
+            '    <div id="respuesta" class="contenido"></div>' +
             '</div>';
         document.getElementsByClassName('edit_content')[0].innerHTML = html;
 
         document.getElementById('respuesta').append(
             "El ORÁCULO PERSONAL es un medio para evolucionar progresivamente, en El Conocimiento Trascendente y quien acceda a su poder (aún de manera virtual) comprenderá su valor como TALISMÁN   ya que constituye un medio real al cual confluyen energías positivas totalmente, al servicio y bajo el control del usuario. Haciendo uso correcto de él, personalmente y al servicio de otros, notará su poderí"
         );
+    }
+
+    function getRespuesta(){
+
     }
 </script>

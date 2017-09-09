@@ -1,3 +1,4 @@
+
 function matriz(){
 	var x = new Array(32);
 	for (var i = 0;i<x.length; i++) {
@@ -1092,4 +1093,6 @@ function matriz(){
 	x[29][32]='La futilidad de quienes te atacan, no mires.';
 	x[30][32]='Están bien y desean comunicación por la web.';
 	x[31][32]='Te dará un hijo, pero no debes saber más ahora.';
+
+    return x;
 }
