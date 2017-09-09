@@ -14,19 +14,22 @@
 
 
 <script>
-
     var preguntasArray = matriz();
+    var color = false;
+    var textoFinal =
+        "El ORÁCULO PERSONAL es un medio para evolucionar progresivamente, en El Conocimiento Trascendente y quien acceda a su poder (aún de manera virtual) comprenderá su valor como TALISMÁN   ya que constituye un medio real al cual confluyen energías positivas totalmente, al servicio y bajo el control del usuario. Haciendo uso correcto de él, personalmente y al servicio de otros, notará su poderío.";
+
     function myFunction() {
 
         var preguntasHTML = '';
         for (var i = 0; i < preguntasArray.length; i++) {
-            preguntasHTML += '<li><a href="#">' + preguntasArray[i][0].toString() + '</a></li>';
+            preguntasHTML += '<li><a href="#" onClick="getRespuesta(' + i + ')">' + preguntasArray[i][0].toString() + '</a></li>';
         }
         var html = '' +
             '<div id="principal">' +
             '    <div id="preguntas" class="contenido">' +
             '        <p>Por favor seleecione la pregunta que desea hacer el día de hoy:</p>' +
-            '        <ul>' + preguntasHTML + '</ul>' +
+            '        <ul id="lista">' + preguntasHTML + '</ul>' +
             '    </div>' +
             '    <div id="bolas" class="contenido">' +
             '        <div id="bola-1" class="bola"></div>' +
@@ -35,16 +38,47 @@
             '        <div id="bola-4" class="bola"></div>' +
             '        <div id="bola-5" class="bola"></div>' +
             '    </div>' +
-            '    <div id="respuesta" class="contenido"></div>' +
+            '    <div id="respuesta" class="contenido">' +
+            '        <div id="rta"></div>' +
+            '        <div id="textoFinal"></div>' +
+            '    </div>' +
             '</div>';
         document.getElementsByClassName('edit_content')[0].innerHTML = html;
 
-        document.getElementById('respuesta').append(
-            "El ORÁCULO PERSONAL es un medio para evolucionar progresivamente, en El Conocimiento Trascendente y quien acceda a su poder (aún de manera virtual) comprenderá su valor como TALISMÁN   ya que constituye un medio real al cual confluyen energías positivas totalmente, al servicio y bajo el control del usuario. Haciendo uso correcto de él, personalmente y al servicio de otros, notará su poderí"
-        );
+        document.getElementById('textoFinal').innerHTML = textoFinal;
     }
 
-    function getRespuesta(){
+    function getRespuesta(pregunta) {
+        document.getElementById("lista").style.display = "none";
+        document.getElementById('preguntas').innerHTML = "<h3>Usted ha seleccionado la pregunta:</h3><h4>" + preguntasArray[pregunta][0].toString() + "</h4>";
+        cambiarColores(15, pregunta);
+    }
 
+    function cambiarColores(cambiosRestantes, pregunta) {
+        if (cambiosRestantes > 0) {
+            color = !color;
+            document.getElementById("bola-1").style.backgroundColor = color ? "black" : "white";
+            document.getElementById("bola-2").style.backgroundColor = color ? "black" : "white";
+            document.getElementById("bola-3").style.backgroundColor = color ? "black" : "white";
+            document.getElementById("bola-4").style.backgroundColor = color ? "black" : "white";
+            document.getElementById("bola-5").style.backgroundColor = color ? "black" : "white";
+            setTimeout("cambiarColores(" + (cambiosRestantes - 1) + ", " + pregunta + ")", 800);
+        } else {
+            var colorBola1 = Math.round(Math.random());
+            var colorBola2 = Math.round(Math.random());
+            var colorBola3 = Math.round(Math.random());
+            var colorBola4 = Math.round(Math.random());
+            var colorBola5 = Math.round(Math.random());
+
+            document.getElementById("bola-1").style.backgroundColor = colorBola1 ? "black" : "white";
+            document.getElementById("bola-2").style.backgroundColor = colorBola2 ? "black" : "white";
+            document.getElementById("bola-3").style.backgroundColor = colorBola3 ? "black" : "white";
+            document.getElementById("bola-4").style.backgroundColor = colorBola4 ? "black" : "white";
+            document.getElementById("bola-5").style.backgroundColor = colorBola5 ? "black" : "white";
+
+            respuesta = parseInt(colorBola1 + '' + colorBola2 + '' + colorBola3 + '' + colorBola4 + '' + colorBola5, 2);
+
+            document.getElementById('rta').innerHTML = "<h2>" + preguntasArray[pregunta][respuesta].toString() + "</h2>";
+        }
     }
 </script>
