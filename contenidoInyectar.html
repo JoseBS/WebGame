@@ -15,7 +15,6 @@
 
 <script>
 
-
     var preguntasArray = matriz();
     var color = false;
     var textoFinal =
@@ -33,13 +32,6 @@
             '        <p>Por favor seleecione la pregunta que desea hacer el día de hoy:</p>' +
             '        <ul id="lista">' + preguntasHTML + '</ul>' +
             '    </div>' +
-            /*'    <div id="bolas" class="contenido">' +
-            '        <div id="bola-1" class="bola"></div>' +
-            '        <div id="bola-2" class="bola"></div>' +
-            '        <div id="bola-3" class="bola"></div>' +
-            '        <div id="bola-4" class="bola"></div>' +
-            '        <div id="bola-5" class="bola"></div>' +
-            '    </div>' +*/
             '    <div id="textoFinal"></div>' +
             '</div>';
 document.getElementsByClassName('content')[0].innerHTML = html;
@@ -85,7 +77,7 @@ document.getElementsByClassName('content')[0].innerHTML = html;
             document.getElementById("bola-4").style.backgroundColor = colorBola4 ? "black" : "white";
             document.getElementById("bola-5").style.backgroundColor = colorBola5 ? "black" : "white";
 
-            respuesta = parseInt(colorBola1 + '' + colorBola2 + '' + colorBola3 + '' + colorBola4 + '' + colorBola5, 2);
+            respuesta = colorBola1 + '' + colorBola2 + '' + colorBola3 + '' + colorBola4 + '' + colorBola5;
 
             document.getElementById('rta').innerHTML = "<h2>" + preguntasArray[pregunta][respuesta].toString() + "</h2>";
         }
